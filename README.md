@@ -17,22 +17,22 @@ https://mattermost.com/blog/deploying-a-web-app-with-python-flask-and-heroku/)
 BUT THEN CHANGED to
 https://realpython.com/flask-by-example/part-1-project-setup
 
-Step 3) Setting up virtual environment
+3) Setting up virtual environment
     3.1) `python3 -m venv venv`
     3.2) `source venv/bin/activate`
-Step 4) Install flask
+4) Install flask
     4.1) `pip install flask (you might have to run 'pip uninstall flask'` first, if you had older version)
     4.2) `python3 -m pip freeze > requirements.txt`
     4.4) add `/home/<username>/.local/bin` into `PATH` in the `~/.bashrc`
-Step 5) Initialize Application 
+5) Initialize Application 
     5.1) Create app.py
-Step 6) Run flask
+6) Run flask
     6.1) `flask run`
     6.2) http://127.0.0.1:5000/ should now display a welcome message!
 
 # PART III - DEPLOYING ON HEROKU
 
-Step 1) Install Heroku CLI
+1) Install Heroku CLI
     https://devcenter.heroku.com/articles/heroku-cli#other-installation-methods
 
     Mac:
@@ -40,10 +40,10 @@ Step 1) Install Heroku CLI
     1.2) Install Heroku CLI 
         `brew tap heroku/brew && brew install heroku`
 
-Step 2)  Login
+2)  Login
     2.1) `heroku login`
 
-Step 3) Deploying
+3) Deploying
     3.1) Create procfile
     
     3.2) Install Gunicorn
