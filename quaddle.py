@@ -71,8 +71,8 @@ for dirtyWord in wordFile:
 chosenWord = random.choice(wordList)
 
 # ask player to guess a word
-
 guesses=6
+
 
 guessList=[]
 
