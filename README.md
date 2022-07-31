@@ -55,3 +55,11 @@ https://realpython.com/flask-by-example/part-1-project-setup
     
     - 3.4) Manually open the app within Heroku and auto deploy the main branch upon any changes being received 
         https://dashboard.heroku.com/apps/caramel-slice
+
+
+# PART IV - INTEGRATING QUADDLE BEHAVIOUR INTO WEB APP
+
+1) Rendering HTML rather than txt
+    https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
+
+    - 1.1) 
