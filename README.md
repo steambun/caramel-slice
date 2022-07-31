@@ -49,3 +49,9 @@ https://realpython.com/flask-by-example/part-1-project-setup
     - 3.2) Install Gunicorn
         `python3 -m pip install gunicorn==20.0.4`
         Add entry to requirements.txt
+    
+    - 3.3) Creating app in heroku (WARNING only 1 person needs to do this!)
+        `heroku create caramel-slice`
+    
+    - 3.4) Manually open the app within Heroku and auto deploy the main branch upon any changes being received 
+        https://dashboard.heroku.com/apps/caramel-slice
