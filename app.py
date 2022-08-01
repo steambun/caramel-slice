@@ -14,7 +14,7 @@ def index():
     random_word = chooseRandomWord()
 
     print("Randomly word chosen: '"+random_word+"'")
-    return render_template('index.html',random_word=random_word)
+    return render_template('index.html')
 
 @app.route("/guess_submitted",methods=['GET','POST'])
 def game():
@@ -28,4 +28,4 @@ def game():
             printable_guesses=printable_guesses+"\t"+guess+"\n"
         print(printable_guesses)
 
-    return render_template('index.html',random_word=random_word)
+    return render_template('index.html',random_word=random_word,guess_list=guess_list)

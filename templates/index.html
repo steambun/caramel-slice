@@ -9,10 +9,25 @@
 <body>
    <h1>Welcome to Quaddle</h1>
    <h3>The Four Letter Guessing Game</h3>
-   <form action="/guess_submitted" method="post">
-    <label for="guess_label">Guess the word?</label>
-    <input type="text" id="guess" name="guess"> 
-    <button type="submit">Guess</button>
-   </form>
+   <table>
+    <tr >
+        <!-- 1st column -->
+        <td valign="top"> 
+            <form action="/guess_submitted" method="post">
+                <label for="guess_label">Guess the word?</label>
+                <input type="text" id="guess" name="guess"> 
+                <button type="submit">Guess</button>
+            </form>
+        </td>
+        <!-- 2nd column -->
+        <td valign="top">
+            <h4>Guesses</h4>
+            {% for guess in guess_list %}
+                <p>{{guess}}</p>
+            {% endfor %}
+        </td>
+    </tr>
+    </table>
+
 </body>
 </html>
