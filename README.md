@@ -62,4 +62,7 @@ https://realpython.com/flask-by-example/part-1-project-setup
 1) Rendering HTML rather than txt
     https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 
-    - 1.1) 
+*) Introducing sessions to avoid using global variables
+    https://vivek-kaushal.medium.com/handling-global-variables-in-flask-36c5b4564792
+    https://flask-session.readthedocs.io/en/latest/
+

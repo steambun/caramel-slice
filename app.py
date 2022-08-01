@@ -24,6 +24,7 @@ def game():
     if request.method== 'POST':
         guess = request.form.get('guess')
         guess_list.append(guess)
+        display_last_guess = formatGuessString(random_word,guess_list)
 
         printable_guesses = "User words guessed:\n"
         for guess in guess_list:
