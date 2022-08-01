@@ -1,5 +1,3 @@
-from distutils.log import error
-from errno import EEXIST
 import random
 
 
