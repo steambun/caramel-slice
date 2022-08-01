@@ -7,12 +7,6 @@
 </head>
 <body>
    <h1>Welcome to Quaddle</h1>
-
-   <h2>Word to be guessed is '{{random_word}}'</h2>
-   <form action="" method="post">
-    <label for="guess_label">Guess the word?</label>
-    <input type="text" id="guess" name="guess"> 
-    <button type="submit">Guess</button>
-   </form>
+   <a href="{{ url_for('game') }}">Start New Game</a>
 </body>
 </html>

@@ -4,12 +4,17 @@ from quaddle_engine import chooseRandomWord
 
 app = Flask(__name__)
 
-@app.route("/",methods=['GET','POST'])
+@app.route("/")
 def index():
+
+    return render_template('index.html')
+
+@app.route("/game",methods=['GET','POST'])
+def game():
     random_word = chooseRandomWord()
 
     if request.method== 'POST':
         guess = request.form.get('guess')
         print('This is your guess "'+guess+"'")
 
-    return render_template('index.html',random_word=random_word)
+    return render_template('game.html',random_word=random_word)
