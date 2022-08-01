@@ -18,6 +18,7 @@
                 <input type="text" id="guess" name="guess"> 
                 <button type="submit">Guess</button>
             </form>
+            {{display_last_guess}}
         </div>
         <div class="column">
             {% if guess_list is defined and guess_list|length > 0 %}

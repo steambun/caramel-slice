@@ -1,7 +1,7 @@
 import random
 
 
-def formatGuessString(guess,guessList):
+def formatGuessString(wordToGuess,guessList):
 
     # if the guess is empty OR guess list is empty
     if(not guessList):
@@ -12,10 +12,10 @@ def formatGuessString(guess,guessList):
     wordToDisplay=""
     for count,lastGuessLetter in enumerate(lastGuess):
         # right letter, right place
-        if(guess[count]==lastGuessLetter):
+        if(wordToGuess[count]==lastGuessLetter):
             wordToDisplay=wordToDisplay+lastGuessLetter+" "
         #right letter, wrong place
-        elif lastGuessLetter in guess:
+        elif lastGuessLetter in wordToGuess:
             wordToDisplay=wordToDisplay+"* "
         # wrong letter
         else:
