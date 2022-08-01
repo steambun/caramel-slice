@@ -1,6 +1,27 @@
 import random
 
 
+def formatGuessString(guess,guessList):
+
+    # if the guess is empty OR guess list is empty
+    if(not guessList):
+        return "_ _ _ _"
+
+    lastGuess=guessList[-1]
+
+    wordToDisplay=""
+    for count,lastGuessLetter in enumerate(lastGuess):
+        # right letter, right place
+        if(guess[count]==lastGuessLetter):
+            wordToDisplay=wordToDisplay+lastGuessLetter+" "
+        #right letter, wrong place
+        elif lastGuessLetter in guess:
+            wordToDisplay=wordToDisplay+"* "
+        # wrong letter
+        else:
+            wordToDisplay=wordToDisplay+"_ "
+
+    return wordToDisplay
 
 def isValidWord (word):
     return len(word) ==4 and not word[0].isupper() and word.find("'") ==-1
