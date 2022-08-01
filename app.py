@@ -7,14 +7,25 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    return render_template('index.html')
+    global random_word
+    global guess_list
 
-@app.route("/game",methods=['GET','POST'])
-def game():
+    guess_list=[]
     random_word = chooseRandomWord()
 
+    print("Randomly word chosen: '"+random_word+"'")
+    return render_template('index.html',random_word=random_word)
+
+@app.route("/guess_submitted",methods=['GET','POST'])
+def game():
+    
     if request.method== 'POST':
         guess = request.form.get('guess')
-        print('This is your guess "'+guess+"'")
+        guess_list.append(guess)
 
-    return render_template('game.html',random_word=random_word)
+        printable_guesses = "User words guessed:\n"
+        for guess in guess_list:
+            printable_guesses=printable_guesses+"\t"+guess+"\n"
+        print(printable_guesses)
+
+    return render_template('index.html',random_word=random_word)
