@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <img src="{{url_for('static', filename='logo.png')}}" align="left" width="38" />
     <title>Quaddle</title>
 </head>
 <body>
    <h1>Welcome to Quaddle</h1>
    <h3>The Four Letter Guessing Game</h3>
-   <form action="/guess_submitted" method="post">
-    <label for="guess_label">Guess the word?</label>
-    <input type="text" id="guess" name="guess"> 
-    <button type="submit">Guess</button>
-   </form>
+   <div class="row">
+        <div class="column">
+            <form action="/guess_submitted" method="post">
+                <label for="guess_label">Guess the word?</label>
+                <input type="text" id="guess" name="guess"> 
+                <button type="submit">Guess</button>
+            </form>
+        </div>
+        <div class="column">
+            {% if guess_list is defined and guess_list|length > 0 %}
+                <b>Guesses</b>
+            {% endif %}
+            {% for guess in guess_list %}
+                <p>{{guess}}</p>
+            {% endfor %}
+        </div>  
+    </div>
 </body>
 </html>
