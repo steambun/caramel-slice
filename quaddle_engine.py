@@ -26,7 +26,14 @@ def formatGuessString(wordToGuess,guessList):
 def isValidWord (word):
     return len(word) ==4 and not word[0].isupper() and word.find("'") ==-1
 
-def chooseRandomWord():
+def isValidWordInWordList(word,wordList):
+    for w in wordList:
+        if(w==word):
+            return True;
+    return False;
+
+def generateWordList():
+    #wordFile = open("/usr/share/dict/words")
     wordFile=open("wordlist_simple.txt")
 
     # create a word list
@@ -38,6 +45,9 @@ def chooseRandomWord():
         if isValidWord(word):
             # print(word)
             wordList.append(word)
+    return wordList
 
+
+def chooseRandomWord(wordList):
     # choose word at random
     return random.choice(wordList)

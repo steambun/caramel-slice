@@ -1,6 +1,6 @@
 from crypt import methods
 from flask import Flask, render_template, request, session
-from quaddle_engine import chooseRandomWord,formatGuessString
+from quaddle_engine import chooseRandomWord,formatGuessString,generateWordList
 
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ app.secret_key = "b'\x0ew\x03\x8a\xe0\x1d_p\xb5\xeb\xecCO\x8f\xe3Z'"
 def index():
 
     session['guess_list']=[]
-    session['random_word'] = chooseRandomWord()
+    session['random_word'] = chooseRandomWord(generateWordList())
     session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
 
     print("Randomly word chosen: '"+session.get('random_word')+"'")
