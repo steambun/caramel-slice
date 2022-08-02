@@ -1,11 +1,37 @@
+.heading-element {
+  font-family: National2, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(32, 33, 36);
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  max-width: 100%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0px;
+  line-height: 0.96;
+}
+
+.subheading-element{
+  font-family: National2, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(50, 96, 142);
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  max-width: 100%;
+  font-size: 1.2rem;
+  font-weight: normal;
+  letter-spacing: 0px;
+  line-height: 1.4;  
+}
+
 .column {
-    float: left;
-    width: 50%;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
