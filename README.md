@@ -72,3 +72,8 @@ https://realpython.com/flask-by-example/part-1-project-setup
     - 2.1) Generate a secret key by running the following on linux:
         https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY
         `python3 -c 'import os; print(os.urandom(16))'`
+
+3) Start using issues in github to track new features / bugs in the software
+    - 3.1) Familarise yourself with the commit auto picked up syntax 
+        https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
+    - 3.2) Start writing "Fix #4" as part of the pull request commit message
