@@ -8,10 +8,11 @@
     <title>Quaddle</title>
 </head>
 <body>
-   <img style="float: left; padding: 0px 10px 0px 5px;" src="{{url_for('static', filename='logo.png')}}" align="left" width="38" />
-   <h1 class="heading-element">Welcome to Quaddle</h1>
-   <p class="subheading-element">The Four Letter Guessing Game</p>
-   <H4>By Fin, Zane & Stephen</H4>
+   <div class="main">
+    <h1>
+        <strong>Quaddle</strong> the four letter game
+    </h1>
+   </div>
    <div class="row">
     <H3>Tutorial</H3>
     <h4>_ Means its not in the word</h4>
@@ -35,6 +36,9 @@
                 <p>{{guess}}</p>
             {% endfor %}
         </div>  
+    </div>
+    <div class="footer">
+        <p>Fin, Zane & Stephen © 2022</p>
     </div>
 </body>
 </html>
