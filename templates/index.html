@@ -19,13 +19,13 @@
                 <input type="text" id="guess" name="guess"> 
                 <button type="submit">Guess</button>
             </form>
-            {{display_last_guess}}
+            {{ session['display_last_guess'] }}
         </div>
         <div class="column">
-            {% if guess_list is defined and guess_list|length > 0 %}
+            {% if session['guess_list'] is defined and session['guess_list']|length > 0 %}
                 <b>Guesses</b>
             {% endif %}
-            {% for guess in guess_list %}
+            {% for guess in session['guess_list'] %}
                 <p>{{guess}}</p>
             {% endfor %}
         </div>  

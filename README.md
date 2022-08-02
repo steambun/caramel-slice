@@ -62,7 +62,13 @@ https://realpython.com/flask-by-example/part-1-project-setup
 1) Rendering HTML rather than txt
     https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 
-*) Introducing sessions to avoid using global variables
+2) Introducing sessions to avoid using global variables
     https://vivek-kaushal.medium.com/handling-global-variables-in-flask-36c5b4564792
     https://flask-session.readthedocs.io/en/latest/
+    The particular problem that we're trying to avoid is that when running guniron (python webserver) within heroku it defaults to running 2 workers (not 1) and so sharing global state is dangerous and unworkable
+    https://stackoverflow.com/questions/62328835/why-my-flask-backend-is-unstable-on-heroku/62330039#62330039
 
+    To solve this we have chosen to use client-side sessions (stored on client's device) not server side sessions (stored on server/db)
+    - 2.1) Generate a secret key by running the following on linux:
+        https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY
+        `python3 -c 'import os; print(os.urandom(16))'`
