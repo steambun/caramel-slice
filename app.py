@@ -12,6 +12,7 @@ app.secret_key = "b'\x0ew\x03\x8a\xe0\x1d_p\xb5\xeb\xecCO\x8f\xe3Z'"
 def index():
 
     session['guess_list']=[]
+    session['display_error']=""
     session['random_word'] = chooseRandomWord(generateWordList())
     session['display_hint'] = generateHint(session['random_word'])
     session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
@@ -23,6 +24,7 @@ def index():
 @app.route("/guess_submitted",methods=['GET','POST'])
 def game():
     
+    session['display_error'] =""
     if request.method== 'POST':
         guess = request.form.get('guess')
         if not isValidWord(guess):
@@ -30,7 +32,6 @@ def game():
         elif not isValidWordInWordList(guess,generateWordList()):
             session['display_error'] = "Your guess is not in the dictionary"
         else:
-            session['display_error'] =""
             session['guess_list'].append(guess)
             session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
             printable_guesses = "User words guessed:\n"
