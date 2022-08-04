@@ -17,6 +17,7 @@ def index():
     session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
 
     print("Randomly word chosen: '"+session.get('random_word')+"'")
+    print("Generated hint: '"+session['display_hint']+"'")
     return render_template('index.html',display_last_guess=session.get('display_last_guess'))
 
 @app.route("/guess_submitted",methods=['GET','POST'])

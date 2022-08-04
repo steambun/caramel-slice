@@ -17,7 +17,6 @@ def generateHint(guess):
             presence_penalty=0
             )
         hint=response.choices[0].text
-        print("Hint generated: '"+hint+"'")
         hint=hint.lower()
         hint=hint.replace("\n","")
         hint=hint.replace(guess,"_ _ _ _")        
