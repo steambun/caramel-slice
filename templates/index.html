@@ -26,6 +26,7 @@
                 <button type="submit">Guess</button>
             </form>
             {{ session['display_last_guess'] }}
+            <H6>{{ session['display_error'] }}</H6>
         </div>
         <div class="column">
             {% if session['guess_list'] is defined and session['guess_list']|length > 0 %}

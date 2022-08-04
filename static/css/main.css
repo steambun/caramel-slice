@@ -6,6 +6,10 @@
   margin-bottom: 10px;
 }
 
+.main h6 {
+  color: rgb(255, 0, 0);
+}
+
 .main {
   font: 100% "Helvetica Neue",Helvetica,Arial,Sans-serif;
   color: #000;

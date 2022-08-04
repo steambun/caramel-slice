@@ -23,15 +23,15 @@ def game():
     
     if request.method== 'POST':
         guess = request.form.get('guess')
-        session['guess_list'].append(guess)
-        session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
         if not isValidWord(guess):
             session['display_error'] = "Your guess is not valid"
-            
-
-        printable_guesses = "User words guessed:\n"
-        for guess in session['guess_list']:
-            printable_guesses=printable_guesses+"\t"+guess+"\n"
-        print(printable_guesses)
+        else:
+            session['display_error'] =""
+            session['guess_list'].append(guess)
+            session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
+            printable_guesses = "User words guessed:\n"
+            for guess in session['guess_list']:
+                printable_guesses=printable_guesses+"\t"+guess+"\n"
+            print(printable_guesses)
 
     return render_template('index.html')
