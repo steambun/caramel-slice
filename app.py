@@ -1,6 +1,6 @@
 from crypt import methods
 from flask import Flask, render_template, request, session
-from quaddle_engine import chooseRandomWord,formatGuessString,generateWordList,isValidWord
+from quaddle_engine import chooseRandomWord,formatGuessString,generateWordList,isValidWord, isValidWordInWordList
 
 
 app = Flask(__name__)
@@ -25,6 +25,8 @@ def game():
         guess = request.form.get('guess')
         if not isValidWord(guess):
             session['display_error'] = "Your guess is not valid"
+        elif not isValidWordInWordList(guess,generateWordList()):
+            session['display_error'] = "Your guess is not in the dictionary"
         else:
             session['display_error'] =""
             session['guess_list'].append(guess)
