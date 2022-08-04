@@ -1,5 +1,20 @@
 import random
+import os
+import openai
 
+openai.api_key = "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"
+
+def generateHint(guess):
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        prompt="Give me a hint to guess the word "+guess,
+        temperature=0,
+        max_tokens=60,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+        )
+    return response.choices[0].text
 
 def formatGuessString(wordToGuess,guessList):
 

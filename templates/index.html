@@ -14,8 +14,8 @@
    
    <div class="row">
     <H3>Tutorial</H3>
-    <h4>  _ → not in the word</h4>
-    <H4>  * → in the word, but wrong place</H4>
+    <h4>_ → not in the word</h4>
+    <H4>* → in the word, but wrong place</H4>
    </div>
    <div class="row">
     <H3>Game</H3>
@@ -24,7 +24,7 @@
                 <label for="guess_label">Guess the word?</label>
                 <input type="text" id="guess" name="guess"> 
                 <button type="submit">Guess</button>
-            </form>
+            </form>            
             {{ session['display_last_guess'] }}
             <H6>{{ session['display_error'] }}</H6>
         </div>
@@ -36,6 +36,10 @@
                 <p>{{guess}}</p>
             {% endfor %}
         </div>  
+    </div>
+    <div class="row">
+        <H3>Hint</H3>
+        <H4>{{ session['display_hint'] }}</H4>
     </div>
 </div>
     <div class="footer">
