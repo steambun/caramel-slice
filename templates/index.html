@@ -33,13 +33,15 @@
                 <b>Guesses</b>
             {% endif %}
             {% for guess in session['guess_list'] %}
-                <p>{{guess}}</p>
+                <h4>{{guess}}</h4>
             {% endfor %}
         </div>  
     </div>
     <div class="row">
-        <H3>Hint</H3>
-        <H4>{{ session['display_hint'] }}</H4>
+        {% if session['display_hint'] is defined and session['display_hint']|length > 0 %}
+            <H3>Hint</H3>
+            <H4>{{ session['display_hint'] }}</H4>
+        {% endif %}
     </div>
 </div>
     <div class="footer">
