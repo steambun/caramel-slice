@@ -6,6 +6,10 @@
   margin-bottom: 10px;
 }
 
+.main h4 {
+  font-weight: normal;
+}
+
 .main h6 {
   color: rgb(255, 0, 0);
 }
