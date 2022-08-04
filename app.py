@@ -25,6 +25,7 @@ def game():
         guess = request.form.get('guess')
         session['guess_list'].append(guess)
         session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
+        session['display_error']='Thats not a valid word'
 
         printable_guesses = "User words guessed:\n"
         for guess in session['guess_list']:
