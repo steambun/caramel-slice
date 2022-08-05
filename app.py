@@ -1,4 +1,5 @@
 from crypt import methods
+from wsgiref.util import guess_scheme
 from flask import Flask, render_template, request, session
 from quaddle_engine import chooseRandomWord,formatGuessString,generateWordList,isValidWord, isValidWordInWordList,generateHint
 
@@ -13,6 +14,7 @@ def index():
 
     session['guess_list']=[]
     session['display_error']=""
+    session['congratulate']="" 
     session['random_word'] = chooseRandomWord(generateWordList())
     session['display_hint'] = generateHint(session['random_word'])
     session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
@@ -39,4 +41,10 @@ def game():
                 printable_guesses=printable_guesses+"\t"+guess+"\n"
             print(printable_guesses)
 
+            session ['congratulate'] = ""
+            if session['random_word']==guess:
+                session ['congratulate'] = "✔"
+            
+
     return render_template('index.html')
+

@@ -29,6 +29,8 @@
             {% if session['display_error'] is defined and session['display_error']|length %}
                 <H6>{{ session['display_error'] }}</H6>
             {% endif %}
+            <br>
+            <h1>{{ session['congratulate'] }}</h1>
         </div>
         <div class="column">
             {% if session['guess_list'] is defined and session['guess_list']|length > 0 %}
