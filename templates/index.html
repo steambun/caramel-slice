@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>Quaddle</title>
 </head>
+
 <body>
    <div class="main">
     <h1>
@@ -35,21 +37,40 @@
         <div class="column">
             {% if session['guess_list'] is defined and session['guess_list']|length > 0 %}
                 <b>Guesses</b>
-            {% endif %}
-            {% for guess in session['guess_list'] %}
+                {% endif %}
+                {% for guess in session['guess_list'] %}
                 <h4>{{guess}}</h4>
-            {% endfor %}
-        </div>  
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            {% if session['display_hint'] is defined and session['display_hint']|length %}
+                <H3>Hint</H3>
+                <button onclick="toggle(this)">💡</button>
+                <div id="displayHint" hidden="hidden">
+                    <H4>{{ session['display_hint'] }}</H4>
+                </div>
+                
+            {% endif %}
+        </div>
     </div>
-    <div class="row">
-        {% if session['display_hint'] is defined and session['display_hint']|length %}
-            <H3>Hint</H3>
-            <H4>{{ session['display_hint'] }}</H4>
-        {% endif %}
-    </div>
-</div>
     <div class="footer">
         <p>Fin, Zane & Stephen © 2022</p>
     </div>
+    <script>
+        let toggle = button =>{
+            let element = document.getElementById("displayHint");
+            let hidden = element.getAttribute("hidden");
+
+            if(hidden)
+            {
+                element.removeAttribute("hidden");
+            }
+            else{
+                element.setAttribute("hidden","hidden")
+            }
+        }
+    </script>
 </body>
+
 </html>
