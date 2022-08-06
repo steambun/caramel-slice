@@ -36,6 +36,11 @@
   bottom: 0;
 }
 
+.guess_row {
+  display: grid;
+  grid-template-columns: 40px 60px 50px;
+}
+
 .column {
   float: left;
   width: 50%;

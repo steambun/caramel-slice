@@ -10,47 +10,52 @@
 </head>
 
 <body>
-   <div class="main">
-    <h1>
-        <strong>Quaddle</strong> the four let_er game</h1>
-   
-   <div class="row">
-    <H3>Tutorial</H3>
-    <h4>_ → not in the word</h4>
-    <H4>* → in the word, but wrong place</H4>
-   </div>
-   <div class="row">
-    <H3>Game</H3>
-        <div class="column">
-            <form action="/guess_submitted" method="post">
-                <label for="guess_label">Guess the word?</label>
-                <input type="text" id="guess" name="guess"> 
-                <button type="submit">Guess</button>
-            </form>            
-            {{ session['display_last_guess'] }}
-            {% if session['display_error'] is defined and session['display_error']|length %}
-                <H6>{{ session['display_error'] }}</H6>
-            {% endif %}
-            <br>
-            <h1>{{ session['congratulate'] }}</h1>
+    <div class="main">
+        <h1>
+            <strong>Quaddle</strong> the four let_er game
+        </h1>
+
+        <div class="row">
+            <H3>Tutorial</H3>
+            <h4>_ → not in the word</h4>
+            <H4>* → in the word, but wrong place</H4>
         </div>
-        <div class="column">
-            {% if session['guess_list'] is defined and session['guess_list']|length > 0 %}
+        <div class="row">
+            <H3>Game</H3>
+            <div class="column">
+                <form action="/guess_submitted" method="post">
+                    <label for="guess_label">Guess the word?</label>
+                    <input type="text" id="guess" name="guess">
+                    <button type="submit">Guess</button>
+                </form>
+                {{ session['display_last_guess'] }}
+                {% if session['display_error'] is defined and session['display_error']|length %}
+                <H6>{{ session['display_error'] }}</H6>
+                {% endif %}
+                <br>
+                <h1>{{ session['display_guess_tickcross'] }}</h1>
+            </div>
+            <div class="column">
+                {% if session['guess_list'] is defined and session['guess_list']|length > 0 %}
                 <b>Guesses</b>
                 {% endif %}
-                {% for guess in session['guess_list'] %}
-                <h4>{{guess}}</h4>
+                {% for guess_display_row in session['guess_list'] %}
+                <div class="guess_row">
+                    {% for guess_display_row_item in guess_display_row %}
+                        <div><h4>{{guess_display_row_item}}</h4></div>
+                    {% endfor %}
+                </div>
                 {% endfor %}
             </div>
         </div>
         <div class="row">
             {% if session['display_hint'] is defined and session['display_hint']|length %}
-                <H3>Hint</H3>
-                <button onclick="toggle(this)">💡</button>
-                <div id="displayHint" hidden="hidden">
-                    <H4>{{ session['display_hint'] }}</H4>
-                </div>
-                
+            <H3>Hint</H3>
+            <button onclick="toggle(this)">💡</button>
+            <div id="displayHint" hidden="hidden">
+                <H4>{{ session['display_hint'] }}</H4>
+            </div>
+
             {% endif %}
         </div>
     </div>
@@ -58,16 +63,15 @@
         <p>Fin, Zane & Stephen © 2022</p>
     </div>
     <script>
-        let toggle = button =>{
+        let toggle = button => {
             let element = document.getElementById("displayHint");
             let hidden = element.getAttribute("hidden");
 
-            if(hidden)
-            {
+            if (hidden) {
                 element.removeAttribute("hidden");
             }
-            else{
-                element.setAttribute("hidden","hidden")
+            else {
+                element.setAttribute("hidden", "hidden")
             }
         }
     </script>

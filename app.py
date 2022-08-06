@@ -1,7 +1,9 @@
 from crypt import methods
 from wsgiref.util import guess_scheme
 from flask import Flask, render_template, request, session
-from quaddle_engine import chooseRandomWord,formatGuessString,generateWordList,isValidWord, isValidWordInWordList,generateHint
+from numpy import true_divide
+from quaddle_engine import (chooseRandomWord,formatGuessString,formatEmptyGuessString,generateWordList,
+                            isValidWord, isValidWordInWordList,generateHint)
 
 
 app = Flask(__name__)
@@ -14,14 +16,14 @@ def index():
 
     session['guess_list']=[]
     session['display_error']=""
-    session['congratulate']="" 
+    session['display_guess_tickcross']="" 
     session['random_word'] = chooseRandomWord(generateWordList())
     session['display_hint'] = generateHint(session['random_word'])
-    session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
+    session['display_last_guess'] = formatEmptyGuessString()
 
     print("Randomly word chosen: '"+session.get('random_word')+"'")
     print("Generated hint: '"+session['display_hint']+"'")
-    return render_template('index.html',display_last_guess=session.get('display_last_guess'))
+    return render_template('index.html')
 
 @app.route("/guess_submitted",methods=['GET','POST'])
 def game():
@@ -34,17 +36,14 @@ def game():
         elif not isValidWordInWordList(guess,generateWordList()):
             session['display_error'] = "Your guess is not in the dictionary"
         else:
-            session['guess_list'].append(guess)
-            session['display_last_guess'] = formatGuessString(session['random_word'],session['guess_list'])
+            # add an guess list item including a (i) tick/cross, (ii) guess and (iii) last_guess_display
+            session ['display_guess_tickcross'] = "✔" if (session['random_word']==guess) else "❌"
+            session['display_last_guess'] = formatGuessString(session['random_word'],guess)
+            session['guess_list'].append([session ['display_guess_tickcross'],guess,session['display_last_guess']])
             printable_guesses = "User words guessed:\n"
-            for guess in session['guess_list']:
-                printable_guesses=printable_guesses+"\t"+guess+"\n"
+            for guessDisplayRow in session['guess_list']:
+                printable_guesses=printable_guesses+"\t"+guessDisplayRow[1]+"\n"
             print(printable_guesses)
-
-            session ['congratulate'] = ""
-            if session['random_word']==guess:
-                session ['congratulate'] = "✔"
-            
 
     return render_template('index.html')
 

@@ -3,6 +3,7 @@ import os
 import openai
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+LENGTH_OF_WORD = 4
 
 def generateHint(guess):
     hint = ""
@@ -24,13 +25,14 @@ def generateHint(guess):
 
     return hint
 
-def formatGuessString(wordToGuess,guessList):
+def formatEmptyGuessString():   
+    wordToDisplay=""
+    wordToDisplay+=(LENGTH_OF_WORD-1)*"_ "
+    wordToDisplay+="_"
 
-    # if the guess is empty OR guess list is empty
-    if(not guessList):
-        return "_ _ _ _"
+    return wordToDisplay
 
-    lastGuess=guessList[-1]
+def formatGuessString(wordToGuess,lastGuess):
 
     wordToDisplay=""
     for count,lastGuessLetter in enumerate(lastGuess):
@@ -47,7 +49,7 @@ def formatGuessString(wordToGuess,guessList):
     return wordToDisplay
 
 def isValidWord (word):
-    return len(word) ==4 and not word[0].isupper() and word.find("'") ==-1
+    return len(word) ==LENGTH_OF_WORD and not word[0].isupper() and word.find("'") ==-1
 
 def isValidWordInWordList(word,wordList):
     for w in wordList:
