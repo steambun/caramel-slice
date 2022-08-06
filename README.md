@@ -77,3 +77,22 @@ https://realpython.com/flask-by-example/part-1-project-setup
     - 3.1) Familarise yourself with the commit auto picked up syntax 
         https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue
     - 3.2) Start writing "Fix #4" as part of the pull request commit message
+
+# PART V - DEBUGGING
+1) VSCode has a great built in support for python flask debugging.  
+    - 1.1) Gotchas:
+        * Ensure that you are not running existing services locally on the same port 
+        * Kill existing web browsers running on the local port so that you can deliberately control the execution of the first http request
+
+# PART VI - TESTING
+
+1) Recommended and simplist/cleanest unit testing framework for python is pytest
+    - 1.1) Install the framework
+        `pip install pytest`
+
+    - 1.2) Update the requirements file to reflect the latest install
+        `python3 -m pip freeze > requirements.txt`
+
+2) Familiarise yourself with framework with an online tutorial
+    - 2.1) realpython.com
+        https://realpython.com/pytest-python-testing/
