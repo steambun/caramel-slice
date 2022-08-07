@@ -32,19 +32,24 @@ def formatEmptyGuessString():
 
     return wordToDisplay
 
-def formatGuessString(wordToGuess,lastGuess):
+def formatGuessString(correctWord,lastGuess):
 
     wordToDisplay=""
     for count,lastGuessLetter in enumerate(lastGuess):
+
         # right letter, right place
-        if(wordToGuess[count]==lastGuessLetter):
-            wordToDisplay=wordToDisplay+lastGuessLetter+" "
+        if(correctWord[count]==lastGuessLetter):
+            wordToDisplay=wordToDisplay+lastGuessLetter
         #right letter, wrong place
-        elif lastGuessLetter in wordToGuess:
-            wordToDisplay=wordToDisplay+"* "
+        elif lastGuessLetter in correctWord:
+            wordToDisplay=wordToDisplay+"*"
         # wrong letter
         else:
-            wordToDisplay=wordToDisplay+"_ "
+            wordToDisplay=wordToDisplay+"_"
+        
+        # add whitespace if last letter
+        if(count!=(len(lastGuess)-1)):
+            wordToDisplay+=" "
 
     return wordToDisplay
 
