@@ -22,6 +22,12 @@ def test_formatGuessString_oneLetterMatchesInWrongPlace():
 def test_formatGuessString_lastCharacterFormattedIsNotASpace():
     assert " " != formatGuessString("bump","debt")[-1]
 
+def test_formatGuessString_showStarIfLetterAppearsCorrectElsewhere():
+    assert "p _ _ *" == formatGuessString("poor","pump")
+
+def test_formatGuessString_onlyShowLetterThatWasGuessedCorrectly():
+    assert "p _ _ _" == formatGuessString("pump","poor")
+
 #
 # isValidWord()
 # 
