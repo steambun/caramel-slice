@@ -63,7 +63,6 @@ def isValidWordInWordList(word,wordList):
     return False;
 
 def generateWordList():
-    #wordFile = open("/usr/share/dict/words")
     wordFile=open("wordlist_simple.txt")
 
     # create a word list
