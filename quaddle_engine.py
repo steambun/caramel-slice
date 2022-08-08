@@ -1,3 +1,4 @@
+from operator import contains
 import random
 import os
 import openai
@@ -41,7 +42,7 @@ def formatGuessString(correctWord,lastGuess):
         if(correctWord[count]==lastGuessLetter):
             wordToDisplay=wordToDisplay+lastGuessLetter
         #right letter, wrong place
-        elif lastGuessLetter in correctWord:
+        elif (lastGuessLetter in correctWord and not letterExistsInBothWordsInCorrectPlace(lastGuessLetter,correctWord,lastGuess)):     
             wordToDisplay=wordToDisplay+"*"
         # wrong letter
         else:
@@ -52,6 +53,15 @@ def formatGuessString(correctWord,lastGuess):
             wordToDisplay+=" "
 
     return wordToDisplay
+
+def letterExistsInBothWordsInCorrectPlace(letter,correctWord,lastGuess):
+
+    for count,correctWordLetter in enumerate(correctWord):
+        if(letter == correctWordLetter and lastGuess[count]==letter):
+            return True
+
+    return False
+
 
 def isValidWord (word):
     return len(word) ==LENGTH_OF_WORD and not word[0].isupper() and word.find("'") ==-1

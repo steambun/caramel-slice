@@ -23,10 +23,25 @@ def test_formatGuessString_lastCharacterFormattedIsNotASpace():
     assert " " != formatGuessString("bump","debt")[-1]
 
 def test_formatGuessString_showStarIfLetterAppearsCorrectElsewhere():
-    assert "p _ _ *" == formatGuessString("poor","pump")
+    assert "p _ _ _" == formatGuessString("poor","pump")
 
 def test_formatGuessString_onlyShowLetterThatWasGuessedCorrectly():
     assert "p _ _ _" == formatGuessString("pump","poor")
+
+
+#
+# isValidWordInWordList()
+#
+def test_isValidWordInWordList_containsWord():
+    wordList=["test"]
+    word="test"
+    assert True==isValidWordInWordList(word,wordList)
+
+def test_isValidWordInWordList_doesNotContainWord():
+    wordList=["bell"]
+    word="test"
+    assert False==isValidWordInWordList(word,wordList)
+
 
 #
 # isValidWord()
@@ -46,18 +61,15 @@ def test_isValidWord_wordHasNoApostrophies():
 def test_isValidWord_wordIsRightLengthWithLowerCaseLetters():
     assert True==isValidWord("abcd")
 
+# 
+# letterExistsInBothWordsInCorrectPlace()
 #
-# isValidWordInWordList()
-#
-def test_isValidWordInWordList_containsWord():
-    wordList=["test"]
-    word="test"
-    assert True==isValidWordInWordList(word,wordList)
+def test_letterExistsInBothWordsInCorrectPlace_successful():
+    assert True==letterExistsInBothWordsInCorrectPlace("p","poor","pump")
 
-def test_isValidWordInWordList_doesNotContainWord():
-    wordList=["bell"]
-    word="test"
-    assert False==isValidWordInWordList(word,wordList)
+def test_letterExistsInBothWordsInCorrectPlace_unsuccessful():
+    assert False==letterExistsInBothWordsInCorrectPlace("p","poor","lump")
+
 
 #
 # generateWordList()
