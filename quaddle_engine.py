@@ -63,8 +63,11 @@ def letterExistsInBothWordsInCorrectPlace(letter,correctWord,lastGuess):
     return False
 
 
-def isValidWord (word):
-    return len(word) ==LENGTH_OF_WORD and not word[0].isupper() and word.find("'") ==-1
+def isValidGuess (guess):
+    return len(guess) ==LENGTH_OF_WORD and not guess[0].isupper() and guess.find("'") ==-1
+
+def isValidDictionaryWord (word):
+    return len(word) ==LENGTH_OF_WORD and not word[0].isupper() and word.find("'") ==-1    
 
 def isValidWordInWordList(word,wordList):
     for w in wordList:
@@ -81,7 +84,7 @@ def generateWordList():
     # create list of valid words
     for dirtyWord in wordFile:
         word=dirtyWord.strip()
-        if isValidWord(word):
+        if isValidDictionaryWord(word):
             # print(word)
             wordList.append(word)
     return wordList

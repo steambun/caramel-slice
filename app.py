@@ -3,7 +3,7 @@ from wsgiref.util import guess_scheme
 from flask import Flask, render_template, request, session
 from numpy import true_divide
 from quaddle_engine import (chooseRandomWord,formatGuessString,formatEmptyGuessString,generateWordList,
-                            isValidWord, isValidWordInWordList,generateHint)
+                            isValidGuess, isValidWordInWordList,generateHint)
 
 
 app = Flask(__name__)
@@ -31,7 +31,7 @@ def game():
     session['display_error'] =""
     if request.method== 'POST':
         guess = request.form.get('guess')
-        if not isValidWord(guess):
+        if not isValidGuess(guess):
             session['display_error'] = "Your guess is not valid"
         elif not isValidWordInWordList(guess,generateWordList()):
             session['display_error'] = "Your guess is not in the dictionary"
