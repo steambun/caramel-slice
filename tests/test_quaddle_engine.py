@@ -44,22 +44,22 @@ def test_isValidWordInWordList_doesNotContainWord():
 
 
 #
-# isValidWord()
+# isValidDictionaryWord()
 # 
-def test_isValidWord_wordTooLong():
-    assert False==isValidWord("abcde")
+def test_isValidDictionaryWord_wordTooLong():
+    assert False==isValidDictionaryWord("abcde")
 
-def test_isValidWord_wordTooShort():
-    assert False==isValidWord("abc")
+def test_isValidDictionaryWord_wordTooShort():
+    assert False==isValidDictionaryWord("abc")
 
-def test_isValidWord_wordAsUpperCaseFirstCharacter():
-    assert False==isValidWord("Abcd")
+def test_isValidDictionaryWord_wordAsUpperCaseFirstCharacter():
+    assert False==isValidDictionaryWord("Abcd")
 
-def test_isValidWord_wordHasNoApostrophies():
-    assert False==isValidWord("Abcd")
+def test_isValidDictionaryWord_wordHasNoApostrophies():
+    assert False==isValidDictionaryWord("Abcd")
 
-def test_isValidWord_wordIsRightLengthWithLowerCaseLetters():
-    assert True==isValidWord("abcd")
+def test_isValidDictionaryWord_wordIsRightLengthWithLowerCaseLetters():
+    assert True==isValidDictionaryWord("abcd")
 
 # 
 # letterExistsInBothWordsInCorrectPlace()
