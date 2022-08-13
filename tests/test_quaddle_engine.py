@@ -30,36 +30,41 @@ def test_formatGuessString_onlyShowLetterThatWasGuessedCorrectly():
 
 
 #
-# isValidWordInWordList()
+# isValidGuessInGuessList()
 #
-def test_isValidWordInWordList_containsWord():
+def test_isValidGuessInWordList_containsWord():
     wordList=["test"]
     word="test"
-    assert True==isValidWordInWordList(word,wordList)
+    assert True==isValidGuessInWordList(word,wordList)
 
-def test_isValidWordInWordList_doesNotContainWord():
+def test_isisValidGuessInWordList_doesNotContainWord():
     wordList=["bell"]
     word="test"
-    assert False==isValidWordInWordList(word,wordList)
+    assert False==isValidGuessInWordList(word,wordList)
+
+def test_isisValidGuessInWordList_capitalLetter():
+    wordList=["bell"]
+    word="Bell"
+    assert True==isValidGuessInWordList(word,wordList)
 
 
 #
-# isValidDictionaryWord()
+# isValidWord()
 # 
-def test_isValidDictionaryWord_wordTooLong():
-    assert False==isValidDictionaryWord("abcde")
+def test_isValidWord_uppercaseStart():
+    assert True==isValidWord("Part")
 
-def test_isValidDictionaryWord_wordTooShort():
-    assert False==isValidDictionaryWord("abc")
+def test_isValidWord_lowercase():
+    assert True==isValidWord("part")
 
-def test_isValidDictionaryWord_wordAsUpperCaseFirstCharacter():
-    assert False==isValidDictionaryWord("Abcd")
+def test_isValidWord_wordTooLong():
+    assert False==isValidWord("abcde")
 
-def test_isValidDictionaryWord_wordHasNoApostrophies():
-    assert False==isValidDictionaryWord("Abcd")
+def test_isValidWord_wordTooShort():
+    assert False==isValidWord("abc")
 
-def test_isValidDictionaryWord_wordIsRightLengthWithLowerCaseLetters():
-    assert True==isValidDictionaryWord("abcd")
+def test_isValidWord_wordHasNoApostrophies():
+    assert False==isValidWord("Ab's")
 
 # 
 # letterExistsInBothWordsInCorrectPlace()
