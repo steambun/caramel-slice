@@ -44,7 +44,7 @@ def test_isisValidGuessInWordList_doesNotContainWord():
 
 def test_isisValidGuessInWordList_capitalLetter():
     wordList=["bell"]
-    word="Bell"
+    word="bell"
     assert True==isValidGuessInWordList(word,wordList)
 
 
