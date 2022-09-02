@@ -5,7 +5,7 @@
 - [Developing Quaddle](#develop)
   - [Device](#device)
   - [Python](#python)
-  - [Heroku](#heroku)
+  - [Render](#render)
   - [Testing](#testing)
   - [Debugging](#debugging)
   - [Tutorials](#tutorials)
@@ -31,8 +31,6 @@ Read on for the basic setup to develop quaddle.
     > **Note**: python3-pip and python-venv should already be installed.
 
     [Python Flask Tutorial](https://realpython.com/flask-by-example-part-1-project-setup) - basics of setting up a Python Flask Example application
-    
-    [Python Flask with Heroku Tutorial](https://mattermost.com/blog/deploying-a-web-app-with-python-flask-and-heroku) - alternative tutorial that also includes heroku
 
 3) Setting up virtual environment
     ```sh
@@ -63,44 +61,14 @@ Read on for the basic setup to develop quaddle.
     ```
     Goto http://127.0.0.1:5000/ and it should display a welcome message!
 
-### Heroku
+### Render
 
-1) Install Heroku CLI
-    [Heroku Installation Tutorial](https://devcenter.heroku.com/articles/heroku-cli#other-installation-methods)
+Render is a free cloud hosting company for hobbiests.  It can be setup automatically to trigger a build and redeployment of the webservice following an observed update to the github repository.
 
-    Mac:
-    - 1.1) Install brew CLI from https://brew.sh 
-    - 1.2) Install Heroku CLI 
+1) Connect GitHub account to Render
+    [Render.com](https://render.com/)
 
-        ```
-        brew tap heroku/brew && brew install heroku
-        ```
-
-2) Login
-
-    ```sh
-    heroku login
-    ```
-
-3) Deploying
-    - 3.1) Create a Procfile    
-    - 3.2) Install Gunicorn
-        ```sh
-        # installing gunicorn
-        python3 -m pip install gunicorn==20.0.4
-
-        # snapshot dependency version requirements
-        python3 -m pip freeze > requirements.txt
-        ```    
-    
-    - 3.3) Creating app in heroku (WARNING only 1 person needs to do this!)
-        ```sh
-        heroku create caramel-slice
-        ```
-    
-    - 3.4) Manually open the app within Heroku and auto deploy the main branch upon any changes being received 
-        https://dashboard.heroku.com/apps/caramel-slice
-
+2) Ensure any environment variables are setup
 
 ### Testing
 
