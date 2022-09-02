@@ -102,7 +102,9 @@ VSCode has a great built in support for python flask debugging.
 
 2. **Sessions**: Using sessions to avoid using global variables [tutorial 1](https://vivek-kaushal.medium.com/handling-global-variables-in-flask-36c5b4564792) and [tutorial 2](https://flask-session.readthedocs.io/en/latest/)
 
-    The particular problem that we're trying to avoid is that when running guniron (python webserver) within heroku it defaults to running 2 workers (not 1) and so sharing global state is dangerous and unworkable.  Description of problem on [stackoverflow](https://stackoverflow.com/questions/62328835/why-my-flask-backend-is-unstable-on-heroku/62330039#62330039)
+    The particular problem that we're trying to avoid is that when running guniron (python webserver) within heroku (the previously used cloud service) it defaulted to running 2 workers (not 1) and so sharing global state is dangerous and unworkable.  Description of problem on [stackoverflow](https://stackoverflow.com/questions/62328835/why-my-flask-backend-is-unstable-on-heroku/62330039#62330039)
+
+    Either way it's generally a good thing to be using sessions instead of global variables to have deterministic control of your state.
 
     To solve this we have chosen to use client-side sessions (stored on client's device) not server side sessions (stored on server/db)
       * Generate a secret key by running the following on linux ([instructions](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY))        
