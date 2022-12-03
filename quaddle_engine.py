@@ -9,21 +9,23 @@ LENGTH_OF_WORD = 4
 def generateHint(guess):
     hint = ""
     if(os.environ.get('OPENAI_API_KEY')):
-        response = openai.Completion.create(
-            model="text-davinci-002",
-            prompt="Generate a clue for the word "+guess,
-            temperature=0,
-            max_tokens=150,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-            )
-        hint=response.choices[0].text
-        hint=hint.lower()
-        hint=hint.replace("\n","")
-        hint=hint.replace(guess,"_ _ _ _")        
-        hint=hint.capitalize()
-
+        try:
+            response = openai.Completion.create(
+                model="text-davinci-002",
+                prompt="Generate a clue for the word "+guess,
+                temperature=0,
+                max_tokens=150,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0
+                )
+            hint=response.choices[0].text
+            hint=hint.lower()
+            hint=hint.replace("\n","")
+            hint=hint.replace(guess,"_ _ _ _")        
+            hint=hint.capitalize()
+        except Exception as e:
+            print("Unable to leverage OpenAI at this time: "+str(e))
     return hint
 
 def formatEmptyGuessString():   
